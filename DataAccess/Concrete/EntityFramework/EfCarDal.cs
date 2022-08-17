@@ -24,12 +24,20 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void Delete(Car entity)
         {
-            throw new NotImplementedException();
+            using (RecapDbContext context = new RecapDbContext())
+            {
+                var deletedEntity = context.Entry(entity);
+                deletedEntity.State = EntityState.Deleted;
+                context.SaveChanges();
+            }
         }
 
         public Car Get(Expression<Func<Car, bool>> filter)
         {
-            throw new NotImplementedException();
+            using (RecapDbContext context = new RecapDbContext())
+            {
+                return context.Set<Car>().SingleOrDefault(filter);
+            }
         }
 
         public List<Car> GetAll(Expression<Func<Car, bool>> filter = null)
@@ -42,7 +50,12 @@ namespace DataAccess.Concrete.EntityFramework
 
         public void Update(Car entity)
         {
-            throw new NotImplementedException();
+            using (RecapDbContext context = new RecapDbContext())
+            {
+                var updatedEntity = context.Entry(entity);
+                updatedEntity.State = EntityState.Modified;
+                context.SaveChanges();
+            }
         }
     }
 }
