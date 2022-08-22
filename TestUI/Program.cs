@@ -22,7 +22,8 @@ namespace TestUI
             //carManager.Delete(2);
             //colorManager.Delete(33);
             //brandManager.Delete(33);
-
+            BrandTestMethod(brandManager);
+            
 
             //CarTestMethod(carManager);
             //ColorManager colorManager = new ColorManager(new EfColorDal());
@@ -32,16 +33,16 @@ namespace TestUI
             //colorManager.Delete(color1);
             Console.WriteLine("**********************************");
 
-            //ColorTestMethod();
+            ColorTestMethod();
             //BrandTestMethod(brandManager);
-            foreach (var car in carManager.GetCarDetails())
-            {
-                Console.WriteLine(car.Description + " / " + car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice );
-            }
+            //foreach (var car in carManager.GetCarDetails())
+            //{
+            //    Console.WriteLine(car.Description + " / " + car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice );
+            //}
 
 
             Console.WriteLine("**********************************");
-            
+            CarTestMethod(carManager);
             
             //Console.WriteLine(color1.ColorId + " / " + color1.ColorName);
             //Brand brand1 = brandManager.GetById(1);
@@ -62,18 +63,22 @@ namespace TestUI
             //           5. Arabaları şu bilgiler olacak şekilde listeleyiniz. CarName, BrandName, ColorName, DailyPrice. (İpucu: IDto oluşturup 3 tabloya join yazınız)
         }
 
+        
+
         private static void BrandTestMethod(BrandManager brandManager)
         {
-            foreach (var item in brandManager.GetAll())
+            var result = brandManager.GetAll();
+            foreach (var brand in result.Data)
             {
-                Console.WriteLine(item.BrandId + " " + item.BrandName);
+                Console.WriteLine(brand.BrandId + " " + brand.BrandName);
             }
         }
 
         private static void ColorTestMethod()
         {
             ColorManager colorManager = new ColorManager(new EfColorDal());
-            foreach (var item in colorManager.GetAll())
+            var result = colorManager.GetAll();
+            foreach (var item in result.Data)
             {
                 Console.WriteLine(item.ColorId + " " + item.ColorName);
 
@@ -83,7 +88,8 @@ namespace TestUI
 
         private static void CarTestMethod(CarManager carManager)
         {
-            foreach (var item in carManager.GetAll())
+            var result = carManager.GetAll();
+            foreach (var item in result.Data)
             {
                 Console.WriteLine(item.Id + " " + item.Description);
 
