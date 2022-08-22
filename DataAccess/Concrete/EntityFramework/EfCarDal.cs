@@ -14,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfCarDal : EfEntityRepositoryBase<Car, RecapDbContext>, ICarDal
     {
-        public List<CarDetailDto> GetProductDetails()
+        public List<CarDetailDto> GetCarDetails()
         {
             using (RecapDbContext context = new RecapDbContext())
             {
@@ -28,7 +28,8 @@ namespace DataAccess.Concrete.EntityFramework
                                  Description = c.Description,
                                  BrandName = b.BrandName,
                                  ColorName = cl.ColorName,
-                                 DailyPrice = c.DailyPrice
+                                 DailyPrice = c.DailyPrice,
+                                 CarId = c.Id
                              };
                 return result.ToList();
             }

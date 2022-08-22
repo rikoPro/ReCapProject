@@ -42,7 +42,7 @@ namespace TestUI
 
 
             Console.WriteLine("**********************************");
-            CarTestMethod(carManager);
+            CarDetailTestMethod(carManager);
             
             //Console.WriteLine(color1.ColorId + " / " + color1.ColorName);
             //Brand brand1 = brandManager.GetById(1);
@@ -92,6 +92,17 @@ namespace TestUI
             foreach (var item in result.Data)
             {
                 Console.WriteLine(item.Id + " " + item.Description);
+
+            }
+            Console.WriteLine("**********************************");
+        }
+
+        private static void CarDetailTestMethod(CarManager carManager)
+        {
+            var result = carManager.GetCarDetails();
+            foreach (var item in result.Data)
+            {
+                Console.WriteLine(item.CarId+ " " + item.Description + " " + item.BrandName + " " + item.DailyPrice);
 
             }
             Console.WriteLine("**********************************");

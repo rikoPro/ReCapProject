@@ -24,5 +24,17 @@ namespace Business.Constants
         public static string ColorDeleted = "Colorsuccessfully deleted.";
         public static string ColorListed = "Colors successfully listed";
         public static string ColorUpdated = "Color successfully updated";
+
+        public static string UserAdded { get; internal set; }
+        public static string UserDeleted { get; internal set; }
+        public static string UserUpdated { get; internal set; }
+        public static string CustomerAdded { get; internal set; }
+        public static string CustomerDeleted { get; internal set; }
+        public static string CustomerUpdated { get; internal set; }
+        public static string Rented { get; internal set; }
+        public static string CarIsNotInStock { get; internal set; }
+        public static string RentDeleted { get; internal set; }
+        public static string RentUpdated { get; internal set; }
+        public static string CarIsSuitable { get; internal set; }
     }
 }
