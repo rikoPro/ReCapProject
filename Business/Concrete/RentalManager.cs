@@ -3,6 +3,7 @@ using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,29 @@ namespace Business.Concrete
         }
         public IResult Add(Rental rental)
         {
-            if (rental.ReturnDate != null)
+            var result = _rentalDal.GetAll(c => c.CarId == rental.CarId);
+            bool isSuitable = false;
+            foreach (var item in result)
+            {
+                if (result != null)
+                {
+                    if (item.ReturnDate != null)
+                    {
+                        isSuitable = true;
+                    }
+                    else
+                    {
+                        isSuitable = false;
+                    }
+                }
+
+                else
+                {
+                    isSuitable = true;
+                }
+                
+            }
+            if (isSuitable)
             {
                 _rentalDal.Add(rental);
                 return new SuccessResult(Messages.Rented);
@@ -37,17 +60,22 @@ namespace Business.Concrete
 
         public IDataResult<List<Rental>> GetAll()
         {
-            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll());
+            var result = _rentalDal.GetAll();
+            if (result==null)
+            {
+                return new ErrorDataResult<List<Rental>>(Messages.NoRentalToShow);
+            }
+            return new SuccessDataResult<List<Rental>>(result);
         }
 
-        public IResult IsSuitableForRent(Car car)
+        public IDataResult<List<Rental>> GetByCarId(int carId)
         {
-            var result = _rentalDal.Get(r => r.CarId == car.Id);   
-            if (result == null || result.ReturnDate != null)
-            {
-                return new SuccessResult(Messages.CarIsSuitable);
-            }
-            return new ErrorResult(Messages.CarIsNotInStock);
+            return new SuccessDataResult<List<Rental>>(_rentalDal.GetAll(r => r.CarId == carId));
+        }
+
+        public IDataResult<List<RentalDetailDto>> GetRentalDetails()
+        {
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails());
         }
 
         public IResult Update(Rental rental)

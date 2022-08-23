@@ -15,52 +15,21 @@ namespace TestUI
             
             BrandManager brandManager = new BrandManager(new EfBrandDal());
 
-            //carManager.Add(new Car { Id = 4, BrandId = 2, ColorId = 1, ModelYear = 1999, DailyPrice = 5000, Description = "Station Wagon" });
-            //colorManager.Add(new Color { ColorId = 33, ColorName = "Pink" });
-            //brandManager.Add(new Brand { BrandId = 33, BrandName = "Mitsubishi" });
 
-            //carManager.Delete(2);
-            //colorManager.Delete(33);
-            //brandManager.Delete(33);
-            BrandTestMethod(brandManager);
-            
-
-            //CarTestMethod(carManager);
-            //ColorManager colorManager = new ColorManager(new EfColorDal());
-            //colorManager.Add( new Color() { ColorId = 11, ColorName = "sgfagsfh" });
-            //Color color1 = colorManager.GetById(11);
-            //ColorTestMethod();
-            //colorManager.Delete(color1);
-            Console.WriteLine("**********************************");
-
-            ColorTestMethod();
             //BrandTestMethod(brandManager);
-            //foreach (var car in carManager.GetCarDetails())
-            //{
-            //    Console.WriteLine(car.Description + " / " + car.BrandName + " / " + car.ColorName + " / " + car.DailyPrice );
-            //}
-
-
-            Console.WriteLine("**********************************");
-            CarDetailTestMethod(carManager);
-            
-            //Console.WriteLine(color1.ColorId + " / " + color1.ColorName);
-            //Brand brand1 = brandManager.GetById(1);
-            //Console.WriteLine(brand1.BrandId + " / " + brand1.BrandName);
-
-
-            //Console.WriteLine(carManager.GetById(4).DailyPrice);
 
 
 
-            //var car = carManager.GetById(2);
-            //Console.WriteLine(car.Description);
+            //Console.WriteLine("**********************************");
 
-            //           1. CarRental Projenizde Core katmanı oluşturunuz.
-            //           2. IEntity, IDto, IEntityRepository, EfEntityRepositoryBase                        dosyalarınızı 9.gün dersindeki gibi oluşturup ekleyiniz.
-            //           3. Car, Brand, Color sınıflarınız için tüm CRUD operasyonlarını hazır              hale getiriniz.
-            //           4. Console'da Tüm CRUD operasyonlarınızı Car, Brand, Model nesneleriniz için test ediniz. GetAll, GetById, Insert, Update, Delete.
-            //           5. Arabaları şu bilgiler olacak şekilde listeleyiniz. CarName, BrandName, ColorName, DailyPrice. (İpucu: IDto oluşturup 3 tabloya join yazınız)
+            // ColorTestMethod();
+
+
+
+            // Console.WriteLine("**********************************");
+            // CarDetailTestMethod(carManager);
+            RentalDetailTestMethod();
+
         }
 
         
@@ -106,6 +75,17 @@ namespace TestUI
 
             }
             Console.WriteLine("**********************************");
+        }
+
+        private static void RentalDetailTestMethod()
+        {
+            RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            var result = rentalManager.GetRentalDetails();
+            foreach (var item in result.Data)
+            {
+                Console.WriteLine("BrandName : "+item.BrandName+"\n"+"Customer Company Name : "+item.CompanyName +"\n" + "Car Description : "+item.Description+"\n"+"Rent Date : "+item.RentDate+"\n");
+                Console.WriteLine("**********************************");
+            }
         }
     }
 }

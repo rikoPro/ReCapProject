@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,9 +33,14 @@ namespace Business.Constants
         public static string CustomerDeleted { get; internal set; }
         public static string CustomerUpdated { get; internal set; }
         public static string Rented { get; internal set; }
-        public static string CarIsNotInStock { get; internal set; }
+        public static string CarIsNotInStock = "The car is not in our stock";
         public static string RentDeleted { get; internal set; }
         public static string RentUpdated { get; internal set; }
-        public static string CarIsSuitable { get; internal set; }
+        public static string CarHandedIn { get; internal set; }
+        public static string NoRentalToShow = "There is no any rentals to show";
+
+        public static string InvalidCarId = "The car is not in our stock";
+
+        public static string CarIsSuitable = "The car is suitable for rent";
     }
 }
