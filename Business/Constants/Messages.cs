@@ -37,6 +37,8 @@ namespace Business.Constants
         public static string RentDeleted { get; internal set; }
         public static string RentUpdated { get; internal set; }
         public static string CarHandedIn { get; internal set; }
+        public static string ImageLimitExceeded = " There can be 5 image for a car";
+
         public static string NoRentalToShow = "There is no any rentals to show";
 
         public static string InvalidCarId = "The car is not in our stock";
