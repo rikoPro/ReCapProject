@@ -11,8 +11,8 @@ namespace Business.Abstract
     public interface ICarImageService
     {
         IDataResult<List<CarImage>> GetAll();
-        IResult Add(CarImage carImage);
-        IResult Update(CarImage carImage);
+        IResult Add(Microsoft.AspNetCore.Http.IFormFile file, CarImage carImage);
+        IResult Update(Microsoft.AspNetCore.Http.IFormFile file, CarImage carImage);
         IResult Delete(CarImage carImage);
         IDataResult<List<CarImage>> GetByCarId(int carId);
     }
