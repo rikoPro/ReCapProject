@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,6 +38,16 @@ namespace Business.Constants
         public static string RentDeleted { get; internal set; }
         public static string RentUpdated { get; internal set; }
         public static string CarHandedIn { get; internal set; }
+        public static string AccessTokenCreated { get; internal set; }
+        public static string RegisteredSuccessfully { get; internal set; }
+        public static string LoginSuccessful = "Successful Login";
+
+        public static string PasswordError = "Wrong password";
+
+        public static string UserNotFound = "User not found";
+
+        public static string UserAlreadyExists = "User already exists";
+
         public static string ImageLimitExceeded = " There can be 5 image for a car";
 
         public static string NoRentalToShow = "There is no any rentals to show";
