@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -55,5 +56,6 @@ namespace Business.Constants
         public static string InvalidCarId = "The car is not in our stock";
 
         public static string CarIsSuitable = "The car is suitable for rent";
+        public static string AuthorizationDenied = "You are not allowed to do this operation";
     }
 }
