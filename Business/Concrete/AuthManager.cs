@@ -24,6 +24,21 @@ namespace Business.Concrete
             _tokenHelper = tokenHelper;
         }
 
+        public IDataResult<User> ChangePassword(UserForChangePasswordDto userForChangePasswordDto, string password)
+        {
+            byte[] passwordHash, passwordSalt;
+            HashingHelper.CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            var user = new User
+            {
+                Email = userForChangePasswordDto.Email,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Status = true
+            };
+            _userService.Update(user);
+            return new SuccessDataResult<User>(user, Messages.PasswordUpdatedSuccessfully);
+        }
+
         public IDataResult<AccessToken> CreateAccessToken(User user)
         {
             var claims = _userService.GetClaims(user);

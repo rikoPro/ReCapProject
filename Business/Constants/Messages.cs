@@ -41,6 +41,8 @@ namespace Business.Constants
         public static string CarHandedIn { get; internal set; }
         public static string AccessTokenCreated { get; internal set; }
         public static string RegisteredSuccessfully { get; internal set; }
+        public static string PasswordUpdatedSuccessfully = "Password updated successfully";
+
         public static string LoginSuccessful = "Successful Login";
 
         public static string PasswordError = "Wrong password";
