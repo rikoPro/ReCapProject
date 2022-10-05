@@ -1,1 +1,19 @@
-<p>rental works!</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Rent ID</th>
+            <th>CompanyName</th>
+            <th>Description</th>
+            <th>Brand Name</th>
+            <th>Rent Date</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let rental of rentals">
+        <td>{{rental.rentId}}</td>
+        <td>{{rental.companyName}}</td>
+        <td>{{rental.description}}</td>
+        <td>{{rental.brandName}}</td>
+        <td>{{rental.rentDate}}</td>
+    </tr>
+</table>
+
